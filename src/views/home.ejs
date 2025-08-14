@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    
+    <% if(currentUser){ %>
+        <h1>Hola <%= currentUser.name %></h1>
+        <% } else { %>
+        <a href="/log-in">Inicia sesion</a>
+        <a href="/sign-up">Crea una cuenta</a>
+        <h1>Hola invitado</h1>
+    <% } %>
+</body>
+</html>

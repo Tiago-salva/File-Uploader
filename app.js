@@ -12,7 +12,7 @@ const { PrismaClient } = require("@prisma/client");
 const initializePassport = require("./config/passport-config");
 
 // Import routers
-const userRouter = require("./src/routes/userRouter");
+const authRouter = require("./src/routes/authRouter");
 
 // App
 const app = express();
@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 });
 
 // Use routes
-app.use("/", userRouter);
+app.use("/", authRouter);
 app.get("/", (req, res) => res.render("home"));
 
 app.listen(process.env.PORT || 3000, () =>

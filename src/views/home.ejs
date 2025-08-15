@@ -7,6 +7,7 @@
 <body>
     
     <% if(currentUser){ %>
+        <a href="/log-out">Log out</a>
         <h1>Hola <%= currentUser.name %></h1>
         <% } else { %>
         <a href="/log-in">Inicia sesion</a>

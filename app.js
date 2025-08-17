@@ -13,6 +13,11 @@ const initializePassport = require("./config/passport-config");
 
 // Import routers
 const authRouter = require("./src/routes/authRouter");
+const fileRouter = require("./src/routes/fileRouter");
+const {
+  isNotAuthenticated,
+  isAuthenticated,
+} = require("./src/middleware/authMiddleware");
 
 // App
 const app = express();
@@ -50,7 +55,8 @@ app.use((req, res, next) => {
 });
 
 // Use routes
-app.use("/", authRouter);
+app.use("/upload", isAuthenticated, fileRouter);
+app.use("/auth", authRouter);
 app.get("/", (req, res) => res.render("home"));
 
 app.listen(process.env.PORT || 3000, () =>

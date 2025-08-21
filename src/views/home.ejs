@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="../../public/css/aside.css">
 </head>
 <body>
-    
+    <%- include("aside") %>
     <% if(currentUser){ %>
-        <a href="/auth/log-out">Log out</a>
-        <a href="/upload">Upload</a>
         <h1>Hola <%= currentUser.name %></h1>
-        <% } else { %>
-        <a href="/auth/log-in">Inicia sesion</a>
-        <a href="/auth/sign-up">Crea una cuenta</a>
+    <% } else { %>
         <h1>Hola invitado</h1>
     <% } %>
 </body>

@@ -18,6 +18,7 @@ const {
   isNotAuthenticated,
   isAuthenticated,
 } = require("./src/middleware/authMiddleware");
+const folderRouter = require("./src/routes/folderRouter");
 
 // App
 const app = express();
@@ -48,7 +49,7 @@ app.use(
 );
 app.use(passport.session());
 
-// Gives acces to currentUser to all the views
+// Gives access to currentUser to all the views
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
@@ -56,6 +57,7 @@ app.use((req, res, next) => {
 
 // Use routes
 app.use("/upload", isAuthenticated, fileRouter);
+app.use("/folder", isAuthenticated, folderRouter);
 app.use("/auth", authRouter);
 app.get("/", (req, res) => res.render("home"));
 

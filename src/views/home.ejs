@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="../../public/css/aside.css">
+    <link rel="stylesheet" href="../../public/css/folders.css">
 </head>
 <body>
     <%- include("aside") %>
     <main>
         <% if(currentUser){ %>
             <h1>Hola <%= currentUser.name %></h1>
+            
+            <div class="folders-container">            
+                <% allUserFolders.forEach(folder => { %>
+                    <a href="folders/<%= folder.id %>" class="folder">
+                        <p><%= folder.name %></p>
+                    </a>
+                <% }) %>
+            </div>
         <% } else { %>
             <h1>Hola invitado</h1>
         <% } %>

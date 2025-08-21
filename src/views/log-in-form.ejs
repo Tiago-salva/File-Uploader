@@ -10,20 +10,23 @@
 <body>
     <%- include("aside") %>
 
-    <form action="/auth/log-in" method="post">
-        <div class="form-field">
-            <label for="email">Email</label>
-            <input name="email" id="email" type="email">
-        </div>
-        <div class="form-field">
-            <label for="password">Password</label>
-            <input name="password" id="password" type="password">
-        </div>
+    <main>
+        <form action="/auth/log-in" method="post">
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input name="email" id="email" type="email">
+            </div>
+            <div class="form-field">
+                <label for="password">Password</label>
+                <input name="password" id="password" type="password">
+            </div>
 
-        <button type="submit">Log in</button>
-    </form>
+            <button type="submit">Log in</button>
+        </form>
 
-    <a href="/auth/sign-up">Sign up</a>
+        <a href="/auth/sign-up">Sign up</a>
+
+    </main>
 </body>
 
 </html>

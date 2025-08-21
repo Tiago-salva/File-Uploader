@@ -8,13 +8,15 @@
 <body>
     <%- include("aside") %>
 
-    <h1>Upload files</h1>
+    <main>
+        <h1>Upload files</h1>
 
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <input type="file" name="myFile">
-        <button type="submit">Upload</button>
-    </form>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="myFile">
+            <button type="submit">Upload</button>
+        </form>
 
-    <a href="/">Go back</a>
+        <a href="/">Go back</a>
+    </main>
 </body>
 </html>

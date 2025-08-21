@@ -7,10 +7,12 @@
 </head>
 <body>
     <%- include("aside") %>
-    <% if(currentUser){ %>
-        <h1>Hola <%= currentUser.name %></h1>
-    <% } else { %>
-        <h1>Hola invitado</h1>
-    <% } %>
+    <main>
+        <% if(currentUser){ %>
+            <h1>Hola <%= currentUser.name %></h1>
+        <% } else { %>
+            <h1>Hola invitado</h1>
+        <% } %>
+    </main>
 </body>
 </html>

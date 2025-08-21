@@ -57,9 +57,8 @@ app.use((req, res, next) => {
 
 // Use routes
 app.use("/upload", isAuthenticated, fileRouter);
-app.use("/folder", isAuthenticated, folderRouter);
 app.use("/auth", authRouter);
-app.get("/", (req, res) => res.render("home"));
+app.use("/", folderRouter);
 
 app.listen(process.env.PORT || 3000, () =>
   console.log(`app listening to port ${process.env.PORT || 3000}`)

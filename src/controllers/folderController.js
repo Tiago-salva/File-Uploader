@@ -1,4 +1,8 @@
-const { addFolder, getAllFolders } = require("../models/folderModel");
+const {
+  addFolder,
+  getAllFolders,
+  getFolder,
+} = require("../models/folderModel");
 
 async function createFolderGet(req, res) {
   res.render("folder-form");
@@ -14,8 +18,14 @@ async function getAllUserFolders(req, res) {
   res.render("home", { allUserFolders: allFolders });
 }
 
+async function getSpecificFolder(req, res) {
+  const folderId = parseInt(req.params.id);
+  return await getFolder(folderId);
+}
+
 module.exports = {
   createFolderGet,
   createFolderPost,
   getAllUserFolders,
+  getSpecificFolder,
 };

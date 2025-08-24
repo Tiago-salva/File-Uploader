@@ -1,19 +1,13 @@
 const fs = require("fs");
 const path = require("path");
+const { getAllFolders } = require("../models/folderModel");
 
-async function listUploadFiles(req, res) {
-  const uploadDir = path.join(__dirname, "../../uploads");
-
-  fs.readdir(uploadDir, (err, files) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("No se pudieron leer los archivos");
-    }
-
-    res.render("file-list", { files });
-  });
+async function renderUploadForm(req, res) {
+  const userId = parseInt(req.user.id);
+  const allUserFolders = await getAllFolders(userId);
+  res.render("upload-form", { allUserFolders: allUserFolders });
 }
 
 module.exports = {
-  listUploadFiles,
+  renderUploadForm,
 };

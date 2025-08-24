@@ -14,13 +14,18 @@ async function createFolderPost(req, res) {
 }
 
 async function getAllUserFolders(req, res) {
-  const allFolders = await getAllFolders(req.user.id);
-  res.render("home", { allUserFolders: allFolders });
+  if (!req.user) {
+    res.render("home", { allUserFolders: [] });
+  } else {
+    const allFolders = await getAllFolders(req.user.id);
+    res.render("home", { allUserFolders: allFolders });
+  }
 }
 
 async function getSpecificFolder(req, res) {
   const folderId = parseInt(req.params.id);
-  return await getFolder(folderId);
+  const folder = await getFolder(folderId);
+  res.render("folder", { folder: folder });
 }
 
 module.exports = {

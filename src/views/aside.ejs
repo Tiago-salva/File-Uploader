@@ -2,12 +2,14 @@
     <nav>
         <ul>
             <% if(currentUser) { %> 
-                <li><a href="/log-out">Log out</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/auth/log-out">Log out</a></li>
                 <li><a href="/upload">Upload</a></li>
-                <li><a href="/folders/new">Create folder</a></li>
+                <li><a href="/folder/new">Create folder</a></li>
             <% } else { %>
-                <li><a href="/log-in">Log in</a></li>
-                <li><a href="/sign-up">Sign up</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/auth/log-in">Log in</a></li>
+                <li><a href="/auth/sign-up">Sign up</a></li>
             <% } %>
         </ul>
     </nav>

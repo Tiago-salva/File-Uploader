@@ -24,7 +24,7 @@ async function logOut(req, res) {
       return next(err);
     }
 
-    res.redirect("/log-in");
+    res.redirect("/auth/log-in");
   });
 }
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../public/css/aside.css">
+    <link rel="stylesheet" href="../../public/css/folders.css">
+    <title><%= folder.name %></title>
+</head>
+<body>
+    <%- include("aside") %>
+    <% if(folder.files) { %>
+        <% folder.files.forEach((file) => { %>
+            <a href="/files/<%= file.id %>"><%= file.name %></a>
+        <% }) %>
+    <% } %>
+</body>
+</html>

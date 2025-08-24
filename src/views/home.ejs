@@ -12,11 +12,22 @@
         <% if(currentUser){ %>
             <h1>Hola <%= currentUser.name %></h1>
             
-            <div class="folders-container">            
+            <div class="folders-container">     
                 <% allUserFolders.forEach(folder => { %>
-                    <a href="folders/<%= folder.id %>" class="folder">
+                    <a href="folder/<%= folder.id %>" class="folder">
                         <p><%= folder.name %></p>
                     </a>
+                <% }) %>
+            </div>
+            <div class="files-container">
+                <% allUserFolders.forEach(folder => { %>
+                    <% folder.files.forEach(file => { %>
+                        <a href="fle/<%= file.id %>" class="file">
+                            <p>
+                                <%= file.name %>
+                            </p>
+                        </a>
+                    <% }) %>
                 <% }) %>
             </div>
         <% } else { %>

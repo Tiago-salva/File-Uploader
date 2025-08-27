@@ -4,6 +4,7 @@ const {
   createFolderPost,
   getAllUserFolders,
   getSpecificFolder,
+  deleteFolderPost,
 } = require("../controllers/folderController");
 const { isAuthenticated } = require("../middleware/authMiddleware");
 const folderRouter = Router();
@@ -15,6 +16,9 @@ folderRouter.get("/", isAuthenticated, getAllUserFolders);
 folderRouter.get("/folder/new", isAuthenticated, createFolderGet);
 
 folderRouter.post("/folder/new", isAuthenticated, createFolderPost);
+
+// Delete folder
+folderRouter.post("/folder/:id/delete", deleteFolderPost);
 
 // Get specific folder
 folderRouter.get("/folder/:id", isAuthenticated, getSpecificFolder);

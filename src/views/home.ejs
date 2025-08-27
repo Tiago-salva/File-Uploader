@@ -13,21 +13,24 @@
             <h1>Hola <%= currentUser.name %></h1>
             
             <div class="folders-container">     
-                <% allUserFolders.forEach(folder => { %>
-                    <a href="folder/<%= folder.id %>" class="folder">
-                        <p><%= folder.name %></p>
-                    </a>
+                <% folders.forEach(folder => { %>
+                        <div class="folder">
+                            <form action="/folder/<%= folder.id %>/delete" method="post">
+                                <button type="submit">Delete</button>
+                            </form>
+                            <a href="/folder/<%= folder.id %>">
+                                <p><%= folder.name %></p>
+                            </a>
+                        </div>
                 <% }) %>
             </div>
             <div class="files-container">
-                <% allUserFolders.forEach(folder => { %>
-                    <% folder.files.forEach(file => { %>
-                        <a href="fle/<%= file.id %>" class="file">
-                            <p>
-                                <%= file.name %>
-                            </p>
-                        </a>
-                    <% }) %>
+                <% rootFiles.forEach(file => { %>
+                    <a href="file/<%= file.id %>" class="file">
+                        <p>
+                            <%= file.name %>
+                        </p>
+                    </a>
                 <% }) %>
             </div>
         <% } else { %>

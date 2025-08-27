@@ -15,7 +15,7 @@
             <input type="file" name="myFile">
 
             <select name="folderId">
-                <% allUserFolders.forEach((folder) => { %>
+                <% allFolders.forEach((folder) => { %>
                     <option value="<%= folder.id %>"><%= folder.name %></option>
                 <% }) %>
             </select>

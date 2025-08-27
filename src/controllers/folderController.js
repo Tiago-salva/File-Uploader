@@ -1,7 +1,8 @@
 const {
   addFolder,
-  getAllFolders,
   getFolder,
+  deleteFolder,
+  getHomeData,
 } = require("../models/folderModel");
 
 async function createFolderGet(req, res) {
@@ -17,8 +18,8 @@ async function getAllUserFolders(req, res) {
   if (!req.user) {
     res.render("home", { allUserFolders: [] });
   } else {
-    const allFolders = await getAllFolders(req.user.id);
-    res.render("home", { allUserFolders: allFolders });
+    const { folders, rootFiles } = await getHomeData(req.user.id);
+    res.render("home", { folders: folders, rootFiles: rootFiles });
   }
 }
 
@@ -28,9 +29,16 @@ async function getSpecificFolder(req, res) {
   res.render("folder", { folder: folder });
 }
 
+async function deleteFolderPost(req, res) {
+  const folderId = parseInt(req.params.id);
+  await deleteFolder(folderId);
+  res.redirect("/");
+}
+
 module.exports = {
   createFolderGet,
   createFolderPost,
   getAllUserFolders,
   getSpecificFolder,
+  deleteFolderPost,
 };

@@ -2,12 +2,16 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const { Router } = require("express");
 const upload = require("../../config/multer-config");
-const { renderUploadForm } = require("../controllers/fileController");
+const {
+  renderUploadForm,
+  renderFileDetail,
+  downloadFile,
+} = require("../controllers/fileController");
 const fileRouter = Router();
 
-fileRouter.get("/", renderUploadForm);
+fileRouter.get("/upload", renderUploadForm);
 
-fileRouter.post("/", upload.single("myFile"), async (req, res) => {
+fileRouter.post("/upload", upload.single("myFile"), async (req, res) => {
   try {
     let targetFolderId = parseInt(req.body.folderId);
     // If there is no folder selected use root folder
@@ -33,5 +37,7 @@ fileRouter.post("/", upload.single("myFile"), async (req, res) => {
     res.status(500).json({ error: "Error subiendo archivo" });
   }
 });
+
+fileRouter.get("/file/:id", renderFileDetail);
 
 module.exports = fileRouter;

@@ -56,8 +56,8 @@ app.use((req, res, next) => {
 });
 
 // Use routes
-app.use("/upload", isAuthenticated, fileRouter);
 app.use("/auth", authRouter);
+app.use("/", isAuthenticated, fileRouter);
 app.use("/", folderRouter);
 
 app.listen(process.env.PORT || 3000, () =>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>File Detail</title>
+    <link rel="stylesheet" href="../../public/css/aside.css">
+</head>
+<body>
+    <%- include("aside") %>
+
+    <div class="file-detail">
+        <h1><%= file.name %></h1>
+        <p>Size: <%= file.formattedSize %></p>
+        <p>Date: <%= file.formattedDate %></p>
+    </div>
+
+    <a href="<%= file.url %>" download="<%= file.name %>">Download</a>
+
+</body>
+</html>
